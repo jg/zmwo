@@ -50,7 +50,7 @@ public aspect Auth {
 		String user = c.getName();
 		String pass = Prompt.prompt("Podaj hasło dla użytkownika " + user + " : ");
 		addUserAuthData(user, pass);
-		System.out.println("Dodano (" + user + ", " + pass + ") do " + PASSWORD_FILE);
+		
 		
 		//+ callee.toString());
 	}
@@ -98,6 +98,7 @@ public aspect Auth {
 		try {
 			pw = new PrintWriter(new FileWriter(PASSWORD_FILE, true));
 			pw.println(username + ":" + password);
+			System.out.println("Dodano (" + username + ", " + password + ") do " + PASSWORD_FILE);
 			pw.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block			
@@ -108,13 +109,15 @@ public aspect Auth {
 	
 	// Query: verify user name/pass authenticity
 	public boolean authenticatedP(String username, String password) {
+		
 		/*
 		Set<String> sortedKeys = new TreeSet<String>();
 		sortedKeys.addAll(passwords.keySet());
-
+		System.out.println("-------------------------\n");
 		for(String key: sortedKeys){
 		    System.out.println(key  + ":" + passwords.get(key));
 		}
+		System.out.println("-------------------------\n");
 		*/
 		
 		String pw;
