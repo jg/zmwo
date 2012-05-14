@@ -28,6 +28,10 @@ public class Customer {
     private String name;
     private int areacode;
     private Vector<Call> calls = new Vector<Call>();
+    
+    public String getName() {
+    	return name;
+    }
         
     /**
      * unregister a call
